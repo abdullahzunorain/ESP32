@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<!-- saved from url=(0132)https://cic.ubc.ca/2022/10/03/nodemcu-and-aws-iot-a-cost-effective-diy-solution-for-sending-data-to-the-cloud-using-the-arduino-ide/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="" lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>NodeMCU and AWS IoT: A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE | UBC Cloud Innovation Centre</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width"> <!-- needed for responsive -->
+<link rel="dns-prefetch" href="https://cdn.ubc.ca/">
+
+<!-- Stylesheets -->
+<link href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/ubc-clf-full-bw.min.css" rel="stylesheet">
+	
+<link rel="profile" href="https://gmpg.org/xfn/11">
+
+<link rel="pingback" href="https://cic.ubc.ca/xmlrpc.php">
+
+
+<!-- BEGIN Metadata added by the Add-Meta-Tags WordPress plugin -->
+<meta name="description" content="Sensors can be used to monitor something of interest, such as humidity in soil, CO2 levels in the air, or ambient sound in a room. Student, Shrey Thapar, writes how to use NodeMCU and AWS IoT to create a cost-effective, DIY monitoring solution.">
+<meta name="keywords" content="student blog posts">
+<!-- END Metadata added by the Add-Meta-Tags WordPress plugin -->
+
+<meta name="robots" content="max-image-preview:large">
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script type="text/javascript" async="" charset="utf-8" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-gaZtYaI7oJHEOo1YO6VuoCE4iZ5fMV9mYHP0BHf+r2ttABnpWWCIkgI6ItNW4ZdO"></script><script data-cfasync="false" data-pagespeed-no-defer="">
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><meta name="template" content="UBC Collab 1.0.5">
+<meta name="description" content="Sensors can be used to monitor something of interest, such as humidity in soil, CO2 levels in the air, or ambient sound in a room. Student, Shrey Thapar, writes how to use NodeMCU and AWS IoT to create a cost-effective, DIY monitoring solution.">
+<link rel="dns-prefetch" href="https://cdn.ubc.ca/">
+<link rel="dns-prefetch" href="https://www.google.com/">
+<link rel="dns-prefetch" href="https://cloud.typography.com/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/cic.ubc.ca\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<link rel="stylesheet" id="subpages-navigation-base-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/subpage-navigation-base.css" type="text/css" media="all">
+<link rel="stylesheet" id="jvm-rich-text-icons-icon-font-css-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="ubc-clf-whitney-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/fonts.css" type="text/css" media="all">
+<link rel="stylesheet" id="ubc-collab-spotlight-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/flexslider.css" type="text/css" media="all">
+<style id="wp-emoji-styles-inline-css" type="text/css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ubc-timeline-style-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/block.css" type="text/css" media="all">
+<link rel="stylesheet" id="carousel-block-slick-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/slick.min.css" type="text/css" media="">
+<link rel="stylesheet" id="carousel-block-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/blocks.style.build.css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-components-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-preferences-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-editor-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(3).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-patterns-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(4).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-reusable-blocks-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(5).css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-editor-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(6).css" type="text/css" media="all">
+<link rel="stylesheet" id="ubc-block-full-width-style-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/block(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="ubc-block-patterns-style-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/build.css" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel="stylesheet" id="tab-shortcode-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/tab.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="pb-accordion-blocks-style-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--ubc-white: #ffffff;--wp--preset--color--ubc-black: #222222;--wp--preset--color--ubc-blue: #002145;--wp--preset--color--ubc-secondary-blue: #0055b7;--wp--preset--color--ubc-tertiary-blue: #00a7e1;--wp--preset--color--ubc-quaternary-blue: #40b4e5;--wp--preset--color--ubc-quinary-blue: #6ec4e8;--wp--preset--color--ubc-senary-blue: #97d4e9;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link rel="stylesheet" id="ubc-tab-style-frontend-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="content-visibility-public-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/content-visibility-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/style(7).css" type="text/css" media="all">
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/jquery-1.12.4-wp.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/jquery-migrate-1.4.1-wp.js.download" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/navigation-base.js.download" id="clf-navigation-base-js"></script>
+<script type="text/javascript" id="ubc-ga-shim-js-extra">
+/* <![CDATA[ */
+var js_errors = {"wpajaxurl":"https:\/\/cic.ubc.ca\/wp-admin\/admin-ajax.php","nonce":"173fc642dc"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/ubc-google-analytics-shim.js.download" id="ubc-ga-shim-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/wp-polyfill.min.js.download" id="wp-polyfill-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/react.min.js.download" id="react-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/react-jsx-runtime.min.js.download" id="react-jsx-runtime-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min.js.download" id="wp-hooks-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/react-dom.min.js.download" id="react-dom-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(1).js.download" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<link rel="https://api.w.org/" href="https://cic.ubc.ca/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://cic.ubc.ca/wp-json/wp/v2/posts/5347"><link rel="canonical" href="https://cic.ubc.ca/2022/10/03/nodemcu-and-aws-iot-a-cost-effective-diy-solution-for-sending-data-to-the-cloud-using-the-arduino-ide/">
+<link rel="shortlink" href="https://cic.ubc.ca/?p=5347">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://cic.ubc.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcic.ubc.ca%2F2022%2F10%2F03%2Fnodemcu-and-aws-iot-a-cost-effective-diy-solution-for-sending-data-to-the-cloud-using-the-arduino-ide%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://cic.ubc.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcic.ubc.ca%2F2022%2F10%2F03%2Fnodemcu-and-aws-iot-a-cost-effective-diy-solution-for-sending-data-to-the-cloud-using-the-arduino-ide%2F&amp;format=xml">
+<script src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/saved_resource" type="text/javascript"></script>	<script>
+	if ( document.location.protocol != "https:" ) {
+		document.location = document.URL.replace(/^http:/i, "https:");
+	}
+	</script>
+	
+        <script type="text/javascript">
+            var jQueryMigrateHelperHasSentDowngrade = false;
+
+			window.onerror = function( msg, url, line, col, error ) {
+				// Break out early, do not processing if a downgrade reqeust was already sent.
+				if ( jQueryMigrateHelperHasSentDowngrade ) {
+					return true;
+                }
+
+				var xhr = new XMLHttpRequest();
+				var nonce = 'c957cc53d9';
+				var jQueryFunctions = [
+					'andSelf',
+					'browser',
+					'live',
+					'boxModel',
+					'support.boxModel',
+					'size',
+					'swap',
+					'clean',
+					'sub',
+                ];
+				var match_pattern = /\)\.(.+?) is not a function/;
+                var erroredFunction = msg.match( match_pattern );
+
+                // If there was no matching functions, do not try to downgrade.
+                if ( null === erroredFunction || typeof erroredFunction !== 'object' || typeof erroredFunction[1] === "undefined" || -1 === jQueryFunctions.indexOf( erroredFunction[1] ) ) {
+                    return true;
+                }
+
+                // Set that we've now attempted a downgrade request.
+                jQueryMigrateHelperHasSentDowngrade = true;
+
+				xhr.open( 'POST', 'https://cic.ubc.ca/wp-admin/admin-ajax.php' );
+				xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+				xhr.onload = function () {
+					var response,
+                        reload = false;
+
+					if ( 200 === xhr.status ) {
+                        try {
+                        	response = JSON.parse( xhr.response );
+
+                        	reload = response.data.reload;
+                        } catch ( e ) {
+                        	reload = false;
+                        }
+                    }
+
+					// Automatically reload the page if a deprecation caused an automatic downgrade, ensure visitors get the best possible experience.
+					if ( reload ) {
+						location.reload();
+                    }
+				};
+
+				xhr.send( encodeURI( 'action=jquery-migrate-downgrade-version&_wpnonce=' + nonce ) );
+
+				// Suppress error alerts in older browsers
+				return true;
+			}
+        </script>
+
+		
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to footer -->
+<script data-cfasync="false" data-pagespeed-no-defer="">
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><link rel="stylesheet" id="custom-css-css" href="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/custom-css-1713478549.min.css" type="text/css" media="all">
+<!--[if lte IE 7]>
+<link href="https://cdn.ubc.ca/clf/7.0.4/css/font-awesome-ie7.css" rel="stylesheet">
+<![endif]-->
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="//cdn.ubc.ca/clf/html5shiv.min.js"></script>
+<![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="https://cdn.ubc.ca/clf/7.0.4/img/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.ubc.ca/clf/7.0.4/img/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.ubc.ca/clf/7.0.4/img/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.ubc.ca/clf/7.0.4/img/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="https://cdn.ubc.ca/clf/7.0.4/img/apple-touch-icon-57-precomposed.png">
+<style type="text/css" media="screen">#ubc7-unit { background: #002145; }</style>
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+
+<script src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/wp-emoji-release.min.js.download" defer=""></script></head>
+
+<body class="post-template-default single single-post postid-5347 single-format-standard category-student-blog-posts full-width l1-column single-5347 primary-active secondary-inactive subsidiary-inactive">
+
+
+<div id="body-container">
+
+		
+			<!-- UBC Global Utility Menu -->
+        <div class="collapse expand" id="ubc7-global-menu">
+            <div id="ubc7-search" class="expand">
+            	<div class="container">                <div id="ubc7-search-box">
+                    <form class="form-search" method="get" action="https://www.ubc.ca/search/refine/" role="search">
+                        <input aria-label="Search Cloud Innovation Centre" type="text" name="q" placeholder="Search Cloud Innovation Centre" class="input-xlarge search-query">
+                        <input type="hidden" name="label" value="Cloud Innovation Centre">
+                        <input type="hidden" name="site" value="*.ubc.ca">
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>
+                </div>            </div>
+            <div class="container">            <div id="ubc7-global-header" class="expand"><div class="row-fluid"><div class="span8 offset2"><ul class="reverse"><li><a href="https://www.calendar.ubc.ca/">Academic Calendar</a></li><li><a href="https://www.ubc.ca/landing/campusservices.html">Campus Services</a></li><li><a href="https://www.ubc.ca/landing/facultiesschools.html">Faculties &amp; Schools</a></li><li><a href="https://www.library.ubc.ca/">Library</a></li><li><a href="https://www.ubc.ca/about/maps.html">Maps</a></li><li><a href="https://www.ubc.ca/quicklinks/">Quicklinks</a></li><li><a href="https://students.ubc.ca/ssc/">Student Service Centre</a></li><li><a href="https://directory.ubc.ca/index.cfm">UBC Directory</a></li></ul></div></div></div>
+            </div>        </div>
+        <!-- End of UBC Global Utility Menu -->
+			<!-- UBC Header -->
+        <header id="ubc7-header" class="row-fluid expand" role="banner">
+        	<div class="container">            <div class="span1">
+                <div id="ubc7-logo">
+                    <a href="https://www.ubc.ca/" title="The University of British Columbia (UBC)">The University of British Columbia</a>
+                </div>
+            </div>
+            <div class="span2">
+                <div id="ubc7-apom">
+                    <a href="https://cdn.ubc.ca/clf/ref/aplaceofmind" title="UBC a place of mind">UBC - A Place of Mind</a>
+                </div>
+            </div>
+            <div class="span9" id="ubc7-wordmark-block">
+                <div id="ubc7-wordmark">
+                    <a href="https://www.ubc.ca/" title="The University of British Columbia (UBC)">The University of British Columbia</a>
+                                    </div>
+                <div id="ubc7-global-utility">
+                    <button type="button" data-toggle="collapse" data-target="#ubc7-global-menu"><span>UBC Search</span></button>
+                    <noscript><a id="ubc7-global-utility-no-script" href="https://www.ubc.ca/" title="UBC Search">UBC Search</a></noscript>
+                </div>
+            </div>
+            </div>        </header>
+        <!-- End of UBC Header -->
+
+		 	<!-- UBC Unit Identifier -->
+        <div id="ubc7-unit" class="row-fluid expand" style="">
+        	<div class="container">            <div class="span12">
+                <!-- Mobile Menu Icon -->
+                <div class="navbar">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target="#ubc7-unit-navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </div>
+                <!-- Unit Name -->
+                <div id="ubc7-unit-name" class="ubc7-single-element">
+                    <a href="https://cic.ubc.ca/" title="Cloud Innovation Centre"><span id="ubc7-unit-faculty"></span><span id="ubc7-unit-identifier">Cloud Innovation Centre</span></a>
+                </div>
+            </div>
+            </div>        </div>
+        <!-- End of UBC Unit Identifier -->
+			<!-- UBC Unit Navigation -->
+        <div id="ubc7-unit-menu" class="navbar expand" role="navigation">
+            <div class="navbar-inner expand">
+                <div class="container">
+                 <div id="ubc7-unit-navigation" class="nav-collapse collapse"><ul id="menu-top-navigation" class="nav"><li id="menu-item-2509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-2509"><a href="https://cic.ubc.ca/">Home Page</a></li>
+<li id="menu-item-2849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2849"><a href="https://cic.ubc.ca/expression-of-interest/">Expression of Interest</a></li>
+<li id="menu-item-2956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2956"><a href="https://cic.ubc.ca/projects/">Projects</a></li>
+<li id="menu-item-7642" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7642"><a href="https://cic.ubc.ca/capstone-projects/">Capstone Projects</a></li>
+<li id="menu-item-4630" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4630"><a href="https://cic.ubc.ca/news/">News</a></li>
+<li id="menu-item-2872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2872"><a href="https://cic.ubc.ca/events/">Events</a></li>
+<li id="menu-item-9404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-9404"><div class="btn-group"><a class="btn" href="https://cic.ubc.ca/about-us/">About Us</a><button class="btn droptown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="expand About Us menu" data-toggle="dropdown"><span aria-hidden="true" class="ubc7-arrow blue down-arrow"></span></button>
+<ul class="dropdown-menu">
+	<li id="menu-item-9405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9405"><a href="https://cic.ubc.ca/cic-playbook/">CIC Playbook</a></li>
+	<li id="menu-item-6967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6967"><a href="https://cic.ubc.ca/contact/">Contact Us</a></li>
+</ul></div>
+</li>
+</ul></div>
+                </div>
+            </div><!-- /navbar-inner -->
+        </div><!-- /navbar -->
+        <!-- End of UBC Unit Navigation -->
+		    
+				<div class="row-fluid content expand">
+				<div class="utility span12">
+
+					<div id="block-3" class="widget widget_block widget-widget_block"><div class="widget-wrap widget-inside">
+<div class="wp-block-group cic-projects-header" contentvisibility="shown"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<h1 class="wp-block-heading">Projects</h1>
+
+
+
+<p>The UBC CIC seeks to support and impact the community: from the community that lives, works, and learns on UBC’s campuses, to our many community sites and partners, including public sector organizations in education, health and life sciences, non-profit and government, and the Indigenous community.</p>
+</div></div>
+</div></div>
+				</div><!-- #header-widget .utility -->
+			</div>
+			
+	<div class="full-width-container">	
+	<div id="container" class="expand">
+	
+		<div class="expand row-fluid" role="main">
+<div id="content" class="hfeed content  span12">
+
+	
+		<div id="post-5347" class="hentry post publish post-1 odd author-nicole-pereyaslavsky has-excerpt category-student-blog-posts">
+
+			<div class="entry-content">
+				<h1 class="single-project-title">NodeMCU and AWS IoT: A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE</h1>
+				<div class="project-content">
+					
+<div class="wp-block-group ubc-clf-container"><div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h1 class="wp-block-heading"><strong>NodeMCU and AWS IoT: A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE</strong></h1>
+
+
+
+<p>By Shrey Thapar</p>
+
+
+
+<p>So…</p>
+
+
+
+<p>Let’s say you’ve purchased, or want to purchase a sensor to monitor something of interest. It could be the humidity of the soil, CO2 levels in the air or the ambient sound in the room.&nbsp;</p>
+
+
+
+<p>You then want to be able to send this data to the cloud. Not just any cloud though, but you want to send this data to AWS. Send it to AWS to utilize the plethora of services it offers to ingest, analyze, stream and showcase that data? If so, you’ve come to the right place!</p>
+
+
+
+<p>The sensor I was given to work with was the CCS811 Environmental Sensor that can closely monitor CO2 and total volatile organic compounds (TVOC) levels in the air. Measured in parts per million (ppm) and parts per billion (ppb), these are the following thresholds for CO2 and TVOC levels.&nbsp;</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image is-resized"><img fetchpriority="high" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/pasted image 0.png" alt="A table that categorises levels of CO2 (ppm) to air quality descriptors ranging from Bad to Excellent." width="401" height="420"><figcaption class="wp-element-caption"> <a href="http://www.ventilationcontrolproducts.net/co2-detector-rc24" target="_blank" rel="noreferrer noopener">http://www.ventilationcontrolproducts.net/co2-detector-rc24</a></figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image is-resized"><img decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/pasted image 0(1).png" alt="A table illustrating the Index Value ranges for Index Categories Good to Very High." width="800" height="418"><figcaption class="wp-element-caption"><a href="https://learn.kaiterra.com/en/resources/understanding-tvoc-volatile-organic-compounds" target="_blank" rel="noreferrer noopener">https://learn.kaiterra.com/en/resources/understanding-tvoc-volatile-organic-compounds</a></figcaption></figure>
+</div>
+</div>
+
+
+
+<p>The first step is to connect this sensor to a board. There are a number of electronic boards out there that allow for the rapid development of IoT projects. Some boards, however, can be quite costly and have a steep learning curve. One board that bypasses these hurdles is the ESP8266 NodeMCU board. Not only is it a cost-effective microcontroller with an integrated WiFi chip, but it supports development in the Arduino IDE. This makes it extremely easy to write code, install libraries for almost any sensor imaginable, and upload it to the board.&nbsp;</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image.jpg" alt="A meme portraying a picture of Gordan Ramsay speaking, with text &quot;So you&#39;re telling me I can use the Arduino IDE to send data every 500ms from any sensor to an AWS IOT Endpoint?&quot;"><figcaption class="wp-element-caption"> <a href="http://www.quickmeme.com/meme/3pymo2">http://www.quickmeme.com/meme/3pymo2</a></figcaption></figure>
+
+
+
+<p>Armed with this knowledge, what do I want to be able to do with this board? Essentially, I want to be able to send environmental sensor data in a JSON format to AWS’ IoT Core which is a service that lets you connect and route trillions of messages from your IoT devices to AWS services at a low latency and high throughput. Here is an architecture diagram showcasing this:</p>
+
+
+
+<figure class="wp-block-image is-resized"><img decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/pasted image 0(2).png" alt="Image of the architecture diagram. It illustrates the process of connecting and authenticating the sensor to the IoT Core through the PubSub client through icons." width="800" height="261"><figcaption class="wp-element-caption">Architecture Diagram: Connecting and Authenticating Sensor to IoT Core Through the PubSub Client</figcaption></figure>
+
+
+
+<p>And the sensor reading would be displayed like this in the AWS IoT MQTT Client:&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  "sensorID": "123456",
+  "measurementType":"CO2", 
+  "measurement":"345", 
+  "timestamp":"2022-04-27 23:11:37.000Z"
+}
+
+{
+  "sensorID": "123456",
+  "measurementType":"TVOC", 
+  "measurement":"420", 
+  "timestamp":"2022-04-27 23:11:37.000Z"
+}
+
+</code></pre>
+
+
+
+<p>When done correctly, this board can be a very useful tool to utilize and send data to an endpoint in AWS’ IoT Core; however, lack of documentation online as well as strict security rules from AWS makes it easy to run into a number of potential authentication, and connectivity issues. The purpose of this article is to go over the potential hurdles I ran into when trying to execute this idea and how I got around those hurdles.</p>
+
+
+
+<h2 class="wp-block-heading">Development Process</h2>
+
+
+
+<p>The idea is simple. Use your normal run of the mill breadboard, jumper wires and Arduino compatible sensor of choice (I’m using a <a href="https://wiki.keyestudio.com/KS0457_keyestudio_CCS811_Carbon_Dioxide_Air_Quality_Sensor">Keyestudio CCS811 Air Quality Sensor</a>) and hook it up to your ESP chip like this.&nbsp;</p>
+
+
+
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image.png" alt="An image of a breadboard with jumper wires and a Keyestudio CCS811 Air Quality Sensor) hooked to an ESP chip." width="1005" height="725"><figcaption class="wp-element-caption">https://github.com/UBC-CIC/health-platform-arduino/blob/main/docs/arduino_sensor_setup.md</figcaption></figure>
+
+
+
+<p>Once that’s done, you register and provision your “Thing” in the AWS IoT Core Console. This is where we run into our first hurdle.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #1: How do I register my NodeMCU with AWS?</strong></h3>
+
+
+
+<p>As we can see in this <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-provision.html">AWS article on provisioning</a>, there are a number of different ways to provision the device. To authenticate client and device connections we need a <strong>X.509 client certificate for each device. </strong>As seen on this <a href="https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html">article on X.509 certificates</a>, there are three types of X.509 certificates AWS supports. The ones generated by AWS IoT themselves, the ones signed by a CA registered with AWS IoT, or a CA not registered with AWS IoT.&nbsp;</p>
+
+
+
+<p>I decided to go with Just in Time Provisioning (JITP) so that I could manually install the X.509 certificates generated by AWS IoT on each device. These certificates are generated once we register a “Thing”in the IoT console and are prompted to download the following:&nbsp;</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/certificates_keys_console.png" alt="Screenshot of Certificates and Keys on the AWS console." width="681" height="887"><figcaption class="wp-element-caption">The certificate and keys presented after creating a thing. Download the following when prompted.&nbsp;</figcaption></figure></div>
+
+
+<p>Once the certificates are burned onto the device, we can authenticate with AWS without any issues and shift our focus to development and coding instead.&nbsp;</p>
+
+
+
+<p>Great! Now that we have decided on the provisioning method, we can go ahead and register the device in the console and have something like this:</p>
+
+
+
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(1).png" alt="A screenshot of registered devices on AWS IoT." width="885" height="534"><figcaption class="wp-element-caption">AWS IoT Core Console with three NodeMCU devices registered</figcaption></figure>
+
+
+
+<p>Once that is done, we can download the Device Certificate, Private Key and RootCA1 to upload to the board’s file system. Here is where we run into our second hurdle.</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(2).png" alt="A screenshot of the Device Certificate, Private Key and RootCA1 certificates after being downloaded and renamed accordingly."><figcaption class="wp-element-caption">The three certificates after being downloaded and renamed accordingly<br></figcaption></figure>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #2: How do I upload the certificates to the board’s memory?&nbsp;</strong></h3>
+
+
+
+<p>Everytime we upload a sketch to the NodeMCU board (through the Arduino IDE), it overwrites the previous content that was on the system’s flash memory that stores the sketches. We want these certificates to <strong>permanently</strong> reside on the board’s non volatile filesystem and not get overwritten. The way I did this was to utilize the <a href="https://github.com/esp8266/arduino-esp8266fs-plugin">Arduino ESP8266 File System Plugin</a>.</p>
+
+
+
+<p>Once installed, something like this will appear in the Arduino IDE.&nbsp;</p>
+
+
+
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(3).png" alt="A screenshot demonstrating the navigation to the ESP8266 Sketch Data Upload from the Tools tab on Arduino." width="1068" height="534"><figcaption class="wp-element-caption">AWS IoT Core Console with three NodeMCU devices registered</figcaption></figure>
+
+
+
+<p>Then, by creating a ‘data’ directory in the sketch folder, we can place our certificates in there, select ‘Sketch Data Upload’ and the files should be uploaded to the NodeMCU’s file system.&nbsp;</p>
+
+
+
+<figure class="wp-block-image"><img decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(4).png" alt="A screenshot of a &#39;data&#39; directory created in the sketch folder, where the certificates can be placed."><figcaption class="wp-element-caption"><strong><em>To see how to handle the filesystem data in the Arduino Sketch, please look at Code Snippet #1 in the Code Snippets Section at the end</em></strong></figcaption></figure>
+
+
+
+<p>Wait a second! Are these the same files we downloaded from AWS? The file names and types for those were of type “pem” but these are of type “der”. Yes, these are the same files. I had to convert them and the reason why, is what brings us to our third hurdle.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #3: How do I convert the certificates to a format the board understands?&nbsp;</strong></h3>
+
+
+
+<p>We can’t simply place these files into the ‘data’ directory of the sketch because they are encoded in the “.PEM” format which is a base64 encoding, something the NodeMCU does not understand. Thus we have to go ahead and install OpenSSL as seen <a href="https://nerdyelectronics.com/how-to-convert-certificates-from-pem-to-der-format/">in this article</a> and convert the files to the “.DER” format. This is a binary encoding for certificates that the NodeMCU board does understand.&nbsp;</p>
+
+
+
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(5).png" alt="An image of OpenSSLs installed, with files converted to &quot;.DER&quot; format." width="886" height="390"><figcaption class="wp-element-caption">Using OpenSSL commands in the CLI to convert the certificates</figcaption></figure>
+
+
+
+<p>Okay, so we have now&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Built the device</li>
+
+
+
+<li>Provisioned it with AWS</li>
+
+
+
+<li>Uploaded the certificates to the board</li>
+</ul>
+
+
+
+<p>We are almost there! By doing these steps we have ensured that we will not have any <strong>authentication </strong>issues, but what about <strong>connectivity issues. </strong>How do we connect it to the WiFi without having to hardcode the credentials and what if we are in an enterprise environment where WiFi can’t be configured as easily?&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #4: How do I prevent the hardcoding the WiFi credentials?</strong></h3>
+
+
+
+<p>Although we could hardcode the wifi credentials inline with the code, this poses a security risk and if the device is moved to another location, we would have to retype and reupload the sketch with the appropriate credentials. This is not feasible. A simpler solution is to use a <a href="https://github.com/tzapu/WiFiManager">WiFi Manager Library</a>. By installing this library, we create a WiFi access point that can be accessed by any WiFi enabled device. Simply open the portal, choose the WiFi that you want to connect to, enter the credentials and you are good to go.&nbsp;</p>
+
+
+
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/image(6).png" alt="A picture of a WiFi portal landing page with the options of Configure WiFi, Info, Exit, and Update." width="243" height="372"><figcaption class="wp-element-caption">WiFi Portal Landing Page&nbsp;</figcaption></figure>
+
+
+
+<p><strong><em>To see how to handle and setup the WiFi library functions in the sketch please refer to Code Snippet #2</em></strong></p>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #5: How do I register my device on enterprise WiFi?</strong></h3>
+
+
+
+<p>One of the main reasons I had connectivity issues was because I was trying to directly connect my IoT device to a WiFi Protected Access (WPA) Enterprise connection without a router. This can be a difficult task as IoT devices mostly don’t support WPA Enterprise connections and consequently, enterprises have a number of security protocols in place to prevent any internet enabled device from just connecting.&nbsp;</p>
+
+
+
+<p>Thus, in order to connect to the WiFi you have to pre-register the <strong>MAC Address </strong>of the device through a portal or by contacting your administrator.&nbsp;</p>
+
+
+
+<p><strong><em>Please refer to Code Snippet #3 to see a sketch to grab an ESP8266’s MAC Address and chip id (a useful identifier metric when sending data to AWS)</em></strong></p>
+
+
+
+<h3 class="wp-block-heading"><strong>Hurdle #6: How do I send the sensor data appropriately to AWS?</strong></h3>
+
+
+
+<p>Less of a hurdle and more of figuring out a way to send the data in a JSON format along with an ISO timestamp. This is so that other AWS services like Lambda can parse and analyze the payloads further. For this I used the <a href="https://github.com/arduino-libraries/NTPClient">NTP Client</a> library and the <a href="https://arduinojson.org/">Arduino JSON</a> library.</p>
+
+
+
+<p><strong><em>To see how to utilize the NTP and JSON Library</em> <em>publish custom JSON messages to MQTT please see Code Snippet #4 and #5</em></strong></p>
+
+
+
+<h2 class="wp-block-heading">Conclusion&nbsp;</h2>
+
+
+
+<p>After successfully resolving these issues, I was able to send data from a <a href="https://wiki.keyestudio.com/KS0457_keyestudio_CCS811_Carbon_Dioxide_Air_Quality_Sensor">Keyestudio CO2/TVOC Air Quality Sensor</a> to the cloud. There are an innumerable number of options of what can be done with the data once it is sent to a specific AWS IoT topic. On my end, this data was then parsed and handled by a Lambda and streamed through AWS Kinesis Data Firehose and loaded into Timestream. It could have also been loaded into DynamoDB. The possibilities are endless.&nbsp;</p>
+
+
+
+<p>Using this board, it is possible that any organization (enterprises, universities,&nbsp; etc) could utilize and provision these devices at a larger scale in the future. This is because the NodeMCU has the potential to be part of a highly customizable solution that can send high granularity data to the cloud. This eliminates the need to purchase third party sensor solutions as well as third party API request costs making it extremely cost effective for prototyping and testing.</p>
+
+
+
+<h2 class="wp-block-heading">Reflection&nbsp;</h2>
+
+
+
+<p>Although I had a decent amount of hands-on experience with Arduino, prior to this project, I did not know much about how devices securely communicate over the internet. After setting up this IoT sensor, I learnt about the MQTT Protocol, how devices use the publish / subscribe design pattern, different types of provisioning techniques and gained a better understanding of C++ and AWS services.&nbsp;</p>
+
+
+
+<p>If you want to see a comprehensive step by step guide of how to do this please follow the guide posted on this <a href="https://github.com/UBC-CIC/health-platform-arduino">Github Repository</a>.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading">Future Improvements</h2>
+
+
+
+<p>Despite overcoming a number of hurdles during the development process, there were some aspects during provisioning that I came across that I still plan to work on in order to improve the project. The following are some of the aspects that I could improve on:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Eliminate the need to hardcode an AWS endpoint and IoT Topic inline with the code</li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Although I was able to figure out how to remove hardcoding the WiFi credentials, the aforementioned values still need to be hardcoded. Need to find a library or develop a custom web server that can allow tweaking of specific variables without needing to open and change the sketch</li>
+</ul>
+
+
+
+<ol class="wp-block-list" start="2">
+<li>Be able to provision the IoT Device through CloudFormation or the Cloud Development Kit (CDK).</li>
+</ol>
+
+
+
+<ul class="wp-block-list">
+<li>Right now, I have to manually register the device through the AWS console and download the certificates. Want to potentially come up with a way to do it utilizing AWS’ Infrastructure as Code services such that they can be deployed automatically in the cloud when the software is run.&nbsp;</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Code Snippets</h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Code Snippet #1: Reading and loading the certificates from the board’s memory</strong></h3>
+
+
+
+<p>(Adapted from the code in this <a href="https://github.com/copercini/esp8266-aws_iot/blob/272a98cc91a42b5f0927733252aab3892b5fe82d/examples/mqtt_x509_DER/mqtt_x509_DER.ino">repository</a>)&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>// To be able to read files from board's non volatile file system
+#include "FS.h"</code></pre>
+
+
+
+<p>This is included in the ‘setup’ part of the sketch. Purpose of this code is to load and read the certificate files ensuring successful authentication to AWS.&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>if (!SPIFFS.begin())
+  {
+    Serial.println("Failed to mount file system");
+    return;
+  }
+
+  Serial.print("Heap: ");
+  Serial.println(ESP.getFreeHeap());
+
+  // Load certificate file
+  File cert = SPIFFS.open("/cert.der", "r"); // replace cert.crt with your uploaded file name
+  if (!cert)
+  {
+    Serial.println("Failed to open cert file");
+  }
+  else
+    Serial.println("Success to open cert file");
+
+  delay(1000);
+
+  if (espClient.loadCertificate(cert))
+    Serial.println("cert loaded");
+  else
+    Serial.println("cert not loaded");
+
+  // Load private key file
+  File private_key = SPIFFS.open("/private.der", "r"); // replace private.der with your uploaded file name
+  if (!private_key)
+  {
+    Serial.println("Failed to open private cert file");
+  }
+  else
+    Serial.println("Success to open private cert file");
+
+  delay(1000);
+
+  if (espClient.loadPrivateKey(private_key))
+    Serial.println("private key loaded");
+  else
+    Serial.println("private key not loaded");
+  // Load CA file
+  File ca = SPIFFS.open("/ca.der", "r"); // replace ca with your uploaded file name
+
+  if (!ca)
+  {
+    Serial.println("Failed to open ca ");
+  }
+  else
+    Serial.println("Success to open ca");
+
+  delay(1000);
+
+  if (espClient.loadCACert(ca))
+    Serial.println("ca loaded");
+  else
+    Serial.println("ca failed");
+
+  Serial.print("Heap: ");
+  Serial.println(ESP.getFreeHeap());
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Code Snippet #2: Setup and Configure the WiFiManager Library</strong></h3>
+
+
+
+<p>Setup WiFi function that is called in the ‘setup’ loop. Can create a custom password for the access point as well as add a custom parameter to the portal.&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>void setup_wifi()
+{
+
+  WiFiManager wifiManager;
+
+  // if uncommented, will reset stored wifi credentials on every boot
+  // wifiManager.resetSettings();
+
+  wifiManager.autoConnect("ESP8266ConnectAP", "password");
+  WiFiManagerParameter custom_text_endpoint("key_num", "Enter your endpoint here", "", 60);
+  delay(10);
+  // We start by connecting to a WiFi network
+  espClient.setBufferSizes(512, 512);
+  Serial.println();
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  timeClient.begin();
+  while (!timeClient.update())
+  {
+    timeClient.forceUpdate();
+  }
+
+  espClient.setX509Time(timeClient.getEpochTime());
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Code Snippet #3: How to view the board’s Chip ID and MAC Address</strong></h3>
+
+
+
+<p>A completely separate sketch, <strong>not part of the sensor connection sketch</strong>. Run this simple script on your board and open the Serial Monitor to view the MAC Address and Chip ID details.</p>
+
+
+
+<pre class="wp-block-code"><code>#include &lt;ESP8266WiFi.h&gt;
+void setup() {
+
+  Serial.begin(9600);
+  Serial.println();
+ 
+}
+
+void loop() {
+  Serial.println("The ESP8266 Chip ID is: ");
+  Serial.println(ESP.getChipId());
+  delay(2500);
+  Serial.println("The ESP8266 Chip MAC Address is: ");
+  Serial.println(WiFi.macAddress());
+  delay(2500);
+
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading"><strong>Code Snippet #4: Creating a JSON Object with sensor and time data to publish to the Cloud</strong></h3>
+
+
+
+<p>Called in the loop part of the sketch, this publish message function sends CO2 readings and TVOC readings to AWS. (Note this can be customized for any type of sensor readings).&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>void publishMessage()
+{
+  StaticJsonDocument&lt;200&gt; docCO2;
+  StaticJsonDocument&lt;200&gt; docTVOC;
+  char jsonBuffer[512];
+
+  docCO2["sensorId"] = String(ESP.getChipId());
+  docCO2["measurementType"] = "CO2";
+  docCO2["measurement"] = String(co2);
+  docCO2["timestamp"] = nowbuf;
+
+  serializeJson(docCO2, jsonBuffer); // print to client
+  client.publish(aws_topic, jsonBuffer);
+
+  docTVOC["sensorId"] = String(ESP.getChipId());
+  docTVOC["measurementType"] = "TVOC";
+  docTVOC["measurement"] = String(tvoc);
+  docTVOC["timestamp"] = nowbuf;
+
+  serializeJson(docTVOC, jsonBuffer); // print to client
+  client.publish(aws_topic, jsonBuffer);
+}</code></pre>
+
+
+
+<p>Here the in the function we&nbsp;</p>
+
+
+
+<ol class="wp-block-list">
+<li>Create 2 JSON objects, 512 characters each.&nbsp;</li>
+
+
+
+<li>The readings come out in a specific JSON format.&nbsp;</li>
+
+
+
+<li>The chipID comes directly from the ESP board</li>
+
+
+
+<li>&nbsp;The co2 and tvoc values are global variables loaded directly from the sensor.&nbsp;</li>
+
+
+
+<li>The ISO format timestamp is loaded from the NTP client</li>
+
+
+
+<li>Both objects are serialized and published to the AWS topic&nbsp;</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading"><strong>Code Snippet #5: How we got the ‘nowbuf’ value from the NTP Client.&nbsp;</strong></h3>
+
+
+
+<pre class="wp-block-code"><code>void setClock()
+{
+&nbsp; configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
+
+&nbsp; Serial.print("Waiting for NTP time sync: ");
+&nbsp; time_t now = time(nullptr);
+&nbsp; while (now &lt; 8 * 3600 * 2)
+&nbsp; {
+&nbsp; &nbsp; delay(500);
+&nbsp; &nbsp; Serial.print(".");
+&nbsp; &nbsp; now = time(nullptr);
+&nbsp; }
+&nbsp; Serial.println("");
+&nbsp; struct tm timeinfo;
+&nbsp; gmtime_r(&amp;now, &amp;timeinfo);
+&nbsp; Serial.print("Current time: ");
+&nbsp; Serial.print(asctime(&amp;timeinfo));&nbsp;&nbsp;// Converts the timestamp to the ISO date and time format&nbsp;&nbsp;Serial.print(strftime(nowbuf, sizeof(nowbuf), "%Y-%m-%d %T", gmtime_r(&amp;now, &amp;timeinfo)));&nbsp;&nbsp;// appends a ‘.000Z’ to the end and the nowbuf value is now updated to be published
+&nbsp; strcat(nowbuf, ".000Z");
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading">Hardware and Materials List</h2>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.digikey.ca/en/products/detail/dfrobot/SEN0339/13166214?utm_adgroup=General&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=Smart%20Shopping_Product_Zombie%20SKUS&amp;utm_term=&amp;productid=13166214&amp;gclid=Cj0KCQjwz96WBhC8ARIsAATR252BWy54Jb29yFNVwH9vFKITHKja6KleA3FnkFrOXLV9Eny2AA9lIzIaAtAcEALw_wcB">CCS811 Environmental Sensor&nbsp;</a></li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.amazon.ca/KeeYees-Internet-Development-Wireless-Compatible/dp/B07HF44GBT">NodeMCU ESP8266</a></li>
+
+
+
+<li><a href="https://www.amazon.ca/%E3%80%906-6Feet%E3%80%91USB-Android-Charger-Motorola-Smartphones/dp/B099K78GW4/ref=sr_1_5?keywords=micro%2Busb%2Bcable&amp;qid=1651254543&amp;sprefix=micro%2Busb%2B%2Caps%2C120&amp;sr=8-5&amp;th=1">Micro-USB Connector</a></li>
+
+
+
+<li><a href="https://www.amazon.ca/breadboard-Breadboard-Protoboard-Solderless-Electronic/dp/B07YQ1XBC1/ref=sr_1_7?crid=26OAVGTALK5WT&amp;keywords=small+breadboard+wires&amp;qid=1651254615&amp;sprefix=small+breaboard+wire%2Caps%2C111&amp;sr=8-7">Jumper Wires&nbsp;</a></li>
+
+
+
+<li><a href="https://www.amazon.ca/BusBoard-Prototype-Systems-Solderless-BreadBoard/dp/B00M2CK0JA/ref=sr_1_8?keywords=breadboard&amp;qid=1651254657&amp;sprefix=breadb%2Caps%2C128&amp;sr=8-8">Breadboard</a></li>
+
+
+
+<li><a href="https://www.amazon.ca/Charger-LUOATIP-Adapter-Charging-Replacement/dp/B07TK6MPNB/ref=sr_1_1_sspa?crid=31ENFA5R6MP8Z&amp;keywords=wall+adapter+usb&amp;qid=1651255327&amp;sprefix=wall+adapte%2Caps%2C5225&amp;sr=8-1-spons&amp;psc=1&amp;spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyREdINkVINU5JWVMwJmVuY3J5cHRlZElkPUEwNTg2MjYwMlRaRk0yTk5OMjYxNiZlbmNyeXB0ZWRBZElkPUEwNDYzNDMzUzcwRlpYRjAzSVEmd2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl">Wall Adapter</a></li>
+</ul>
+</div></div>
+				</div>
+			</div><!-- .entry-content -->
+
+		</div><!-- .hentry -->
+
+	
+	
+</div><!-- .content .hfeed -->
+
+		</div>
+	</div><!-- #container -->
+</div>	
+	
+
+	<!-- CLF Footer -->
+<footer id="ubc7-footer" class="expand" role="contentinfo">
+			<div class="row-fluid expand" id="ubc7-unit-footer">
+			<div class="container">            <div class="span10" id="ubc7-unit-address">
+                <div id="ubc7-address-unit-name">Office of the Provost &amp; Vice-President Academic</div>
+                                                <div id="ubc7-address-street">Room 651 Walter C. Koerner Library</div>                <div id="ubc7-address-street2">1958 Main Mall</div>                <div id="ubc7-address-location">
+                    <span id="ubc7-address-city">Vancouver</span>, <span id="ubc7-address-province">BC</span> <span id="ubc7-address-country">Canada</span> <span id="ubc7-address-postal">V6T 1Z2</span>                </div>
+                                                <div id="ubc7-address-website">Website <a href="https://cic.ubc.ca/">cic.ubc.ca</a></div>                <div id="ubc7-address-email">Email <a href="mailto:cic.info@ubc.ca">cic.info@ubc.ca</a></div>            </div>
+                        </div>        </div>
+			<div class="row-fluid expand ubc7-back-to-top">
+			<div class="container">            <div class="span2">
+                <a href="https://cic.ubc.ca/2022/10/03/nodemcu-and-aws-iot-a-cost-effective-diy-solution-for-sending-data-to-the-cloud-using-the-arduino-ide/#" title="Back to top">Back to top <div class="ubc7-arrow up-arrow grey"></div></a>
+            </div>
+            </div>        </div>
+			<div class="row-fluid expand" id="ubc7-global-footer">
+			<div class="container">            <div class="span5" id="ubc7-signature"><a href="https://www.ubc.ca/" title="The University of British Columbia (UBC)">The University of British Columbia</a></div>
+            <div class="span7" id="ubc7-footer-menu"><div class="row-fluid"><div class="span6"><h3>About UBC</h3><div><a href="https://www.ubc.ca/about/contact.html">Contact UBC</a></div><div><a href="https://www.ubc.ca/about/">About the University</a></div><div><a href="https://www.ubc.ca/landing/news.html">News</a></div><div><a href="https://www.ubc.ca/landing/events.html">Events</a></div><div><a href="https://hr.ubc.ca/careers-and-job-postings">Careers</a></div><div><a href="https://give.ubc.ca/">Make a Gift</a></div><div><a href="https://www.ubc.ca/search/">Search UBC.ca</a></div></div><div class="span6"><h3>UBC Campuses</h3><div><a href="https://www.ubc.ca/">Vancouver Campus</a></div><div><a href="https://ok.ubc.ca/">Okanagan Campus</a></div><h4>UBC Sites</h4><div><a href="https://robsonsquare.ubc.ca/">Robson Square</a></div><div><a href="https://thecdm.ca/">Centre for Digital Media</a></div><div><a href="https://www.med.ubc.ca/about/campuses/">Faculty of Medicine Across BC</a></div></div></div></div>
+            </div>        </div>
+        <div class="row-fluid expand" id="ubc7-minimal-footer">
+        	<div class="container">            <div class="span12">
+                <ul>
+                    <li><a href="https://cdn.ubc.ca/clf/ref/emergency" title="Emergency Procedures">Emergency Procedures</a> <span class="divider">|</span></li>
+                    <li><a href="https://cdn.ubc.ca/clf/ref/terms" title="Terms of Use">Terms of Use</a> <span class="divider">|</span></li>
+                    <li><a href="https://cdn.ubc.ca/clf/ref/copyright" title="UBC Copyright">Copyright</a> <span class="divider">|</span></li>
+                    <li><a href="https://cdn.ubc.ca/clf/ref/accessibility" title="Accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+            </div>        </div>
+	</footer>
+<!-- End of CLF Footer -->
+	
+	
+
+	
+	
+
+</div><!-- #body-container -->
+
+
+
+
+<script type="text/javascript">	jQuery(function () { jQuery('.section-widget-tabbed .nav-tabs a, widget-inside .nav-tabs a').click(function (e) { e.preventDefault();
+	jQuery(this).tab('show'); }) });
+
+</script>
+<!-- GTM Container placement set to footer -->
+<!-- Google Tag Manager (noscript) -->			<!-- Google tag (gtag.js) -->
+			<script async="" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/js"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'G-XVKQR5E1CT');
+			</script>
+			<!-- End Google Analytics -->
+		
+		<style id="core-block-supports-inline-css" type="text/css">
+.wp-container-core-columns-is-layout-1{flex-wrap:nowrap;}
+</style>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/ubc-clf.min.js.download" id="clf-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(2).js.download" id="wp-autop-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(3).js.download" id="wp-blob-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(4).js.download" id="wp-block-serialization-default-parser-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(5).js.download" id="wp-deprecated-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(6).js.download" id="wp-dom-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(7).js.download" id="wp-escape-html-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(8).js.download" id="wp-element-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(9).js.download" id="wp-is-shallow-equal-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(10).js.download" id="wp-keycodes-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(11).js.download" id="wp-priority-queue-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(12).js.download" id="wp-compose-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(13).js.download" id="wp-private-apis-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(14).js.download" id="wp-redux-routine-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(15).js.download" id="wp-data-js"></script>
+<script type="text/javascript" id="wp-data-js-after">
+/* <![CDATA[ */
+( function() {
+	var userId = 0;
+	var storageKey = "WP_DATA_USER_" + userId;
+	wp.data
+		.use( wp.data.plugins.persistence, { storageKey: storageKey } );
+} )();
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(16).js.download" id="wp-html-entities-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(17).js.download" id="wp-dom-ready-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(18).js.download" id="wp-a11y-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(19).js.download" id="wp-rich-text-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(20).js.download" id="wp-shortcode-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(21).js.download" id="wp-warning-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(22).js.download" id="wp-blocks-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(23).js.download" id="wp-url-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(24).js.download" id="wp-api-fetch-js"></script>
+<script type="text/javascript" id="wp-api-fetch-js-after">
+/* <![CDATA[ */
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://cic.ubc.ca/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "ffb07d3080" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://cic.ubc.ca/wp-admin/admin-ajax.php?action=rest-nonce";
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/moment.min.js.download" id="moment-js"></script>
+<script type="text/javascript" id="moment-js-after">
+/* <![CDATA[ */
+moment.updateLocale( 'en_US', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"F j, Y","LLL":"F j, Y g:i a","LLLL":null}} );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(25).js.download" id="wp-date-js"></script>
+<script type="text/javascript" id="wp-date-js-after">
+/* <![CDATA[ */
+wp.date.setSettings( {"l10n":{"locale":"en_US","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"meridiem":{"am":"am","pm":"pm","AM":"AM","PM":"PM"},"relative":{"future":"%s from now","past":"%s ago","s":"a second","ss":"%d seconds","m":"a minute","mm":"%d minutes","h":"an hour","hh":"%d hours","d":"a day","dd":"%d days","M":"a month","MM":"%d months","y":"a year","yy":"%d years"},"startOfWeek":1},"formats":{"time":"g:i a","date":"F j, Y","datetime":"F j, Y g:i a","datetimeAbbreviated":"M j, Y g:i a"},"timezone":{"offset":-8,"offsetFormatted":"-8","string":"America\/Vancouver","abbr":"PST"}} );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(26).js.download" id="wp-primitives-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(27).js.download" id="wp-components-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(28).js.download" id="wp-keyboard-shortcuts-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(29).js.download" id="wp-commands-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(30).js.download" id="wp-notices-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(31).js.download" id="wp-preferences-persistence-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(32).js.download" id="wp-preferences-js"></script>
+<script type="text/javascript" id="wp-preferences-js-after">
+/* <![CDATA[ */
+( function() {
+				var serverData = false;
+				var userId = "0";
+				var persistenceLayer = wp.preferencesPersistence.__unstableCreatePersistenceLayer( serverData, userId );
+				var preferencesStore = wp.preferences.store;
+				wp.data.dispatch( preferencesStore ).setPersistenceLayer( persistenceLayer );
+			} ) ();
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(33).js.download" id="wp-style-engine-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(34).js.download" id="wp-token-list-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(35).js.download" id="wp-wordcount-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(36).js.download" id="wp-block-editor-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(37).js.download" id="wp-core-data-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(38).js.download" id="wp-media-utils-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(39).js.download" id="wp-patterns-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(40).js.download" id="wp-plugins-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(41).js.download" id="wp-server-side-render-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(42).js.download" id="wp-viewport-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/index.min(43).js.download" id="wp-editor-js"></script>
+<script type="text/javascript" id="wp-editor-js-after">
+/* <![CDATA[ */
+Object.assign( window.wp.editor, window.wp.oldEditor );
+Object.assign( window.wp.editor, window.wp.oldEditor );
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/block.js.download" id="ubc-block-full-width-js-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/build.js.download" id="ubc-block-patterns-scripts-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/accordion-blocks.min.js.download" id="pb-accordion-blocks-frontend-script-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/frontend.js.download" id="ubc-tab-script-frontend-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/new-tab.js.download" id="page-links-to-js"></script>
+<script type="text/javascript" id="gforms_recaptcha_recaptcha-js-extra">
+/* <![CDATA[ */
+var gforms_recaptcha_recaptcha_strings = {"site_key":"6LdCst8hAAAAAE8ToScYHKh0KGH8aIB-ZnMz32A1","ajaxurl":"https:\/\/cic.ubc.ca\/wp-admin\/admin-ajax.php","nonce":"5d218f8c82"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/api.js.download" id="gforms_recaptcha_recaptcha-js"></script>
+<script type="text/javascript" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/1411001950-global-javascript.min.js.download" id="add-global-javascript-js"></script>
+<!-- Served by: cms-prod-2023-3 -->
+
+<p id="a11y-speak-intro-text" class="a11y-speak-intro-text" style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;" hidden="hidden">Notifications</p><div id="a11y-speak-assertive" class="a11y-speak-region" style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;" aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div><div id="a11y-speak-polite" class="a11y-speak-region" style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;" aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-jxtzpzg561is" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/anchor.html"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./NodeMCU and AWS IoT_ A cost-effective, DIY solution for sending data to the Cloud using the Arduino IDE _ UBC Cloud Innovation Centre_files/saved_resource(1).html"></iframe></div></body></html>

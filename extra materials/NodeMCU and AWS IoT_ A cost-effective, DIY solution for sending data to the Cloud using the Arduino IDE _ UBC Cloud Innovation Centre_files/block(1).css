@@ -1,0 +1,35 @@
+/****************************************
+* CLF Full Width Plugin variables
+*****************************************/
+body.full-width .wp-block-group {
+  --container-width: 1200px; }
+
+body:not(.full-width) .wp-block-group {
+  --container-width: 800px; }
+
+.wp-block-group {
+  --gutter: 15px; }
+  @media screen and (max-width: 979px) {
+    .wp-block-group {
+      --gutter: 20px; } }
+
+/****************************************
+* Global Settings
+*****************************************/
+.wp-block-group.ubc-clf-full {
+  width: calc( 100% + 2 * var(--gutter));
+  margin-left: calc( -1 * var(--gutter)); }
+
+.wp-block-group.ubc-clf-container {
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto; }
+
+figure {
+  margin: 0; }
+
+.clf-media-full-width img, .clf-media-full-width video {
+  width: 100%; }
+
+
+/*# sourceMappingURL=block.css.map*/
